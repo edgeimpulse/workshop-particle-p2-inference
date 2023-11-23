@@ -1,3 +1,4 @@
+.DS_Store/
 .vscode/
 
 # Libraries are installed dynamically from project.properties

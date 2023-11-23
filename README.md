@@ -26,6 +26,10 @@ Follow the directions [on this Edge Impulse tutorial](https://docs.edgeimpulse.c
 | INT1       | Not connected |
 | INT2       | Not connected |
 
+> **Important!** You must register your P2 on your Particle account before continuing
+
+Plug your P2 into your computer. Head to [https://docs.particle.io/device-setup/](https://docs.particle.io/device-setup/) and follow the instructions to register it.
+
 ## Repository contents
 
 The source code for this example can be found in the *src/* directory. You probably want to look at *src/main.cpp*. This contains the application demo for performing live inference by reading from the ADXL362 accelerometer.
@@ -33,6 +37,30 @@ The source code for this example can be found in the *src/* directory. You proba
 Note that this repository has a pre-trained model that has been deployed from Edge Impulse. The model was trained by using a small dataset of continuous gestures. You can clone and deploy the model [from this public Edge Impulse project](https://studio.edgeimpulse.com/public/311665/latest).
 
 There is also a *static buffer* example found in *examples/static_buffer/main.cpp*. Feel free to look at that demo to see how you might test inference without connecting the accelerometer.
+
+## Build and flash
+
+Install the Particle Workbench by [following these instructions](https://docs.particle.io/workbench/). We recommend simply installing the [VS Code extension](https://docs.particle.io/quickstart/workbench/#workbench-extension-installation).
+
+Once installed, click the Particle Workshop extension on the left-side toolbar of VS Code. Alternatively, you can press *ctrl + shift + p* (Win/Linux) or *cmd + shfit + p* (Mac) to bring up the command palette and enter `>Particle:` to access the various Workbench commands.
+
+1. In Workbench, select **Particle: Import Project** and select the `project.properties` file in the directory that you just downloaded and extracted.
+
+2. Use **Particle: Configure Project for Device** and follow the prompts:
+
+    a. Select **deviceOS@5.5.0** 
+
+    b. Choose **Photon/P2** as your target
+
+    c. Go to [https://console.particle.io/devices](https://console.particle.io/devices) and copy the *ID* for your P2 device. Paste it into the prompt when asked *Device ID or name?*
+
+3. Compile with  **Particle: Compile application (local)**
+
+4. Flash with **Particle: Flash application (local)**
+
+5. Open the serial monitor with **Particle: Serial Monitor** to view the inference output
+
+> **Important!** At this time you cannot use the **Particle: Cloud Compile** or **Particle: Cloud Flash** options; local compilation is required.
 
 ## Deploy your own model
 
@@ -43,24 +71,6 @@ If you wish to deploy your own model, deploy with the *Particle* target from the
  * *tflite-model/*
 
 When deployed, these folders contain your trained model and all the necessary code to run inference.
-
-## Build and flash
-
-Install the Particle Workbench by [following these instructions](https://docs.particle.io/workbench/). We recommend simply installing the [VS Code extension](https://docs.particle.io/quickstart/workbench/#workbench-extension-installation).
-
-Once installed, click the Particle Workshop extension on the left-side toolbar of VS Code. Alternatively, you can press *ctrl + shift + p* (Win/Linux) or *cmd + shfit + p* (Mac) to bring up the command palette and enter `>Particle:` to access the various Workbench commands.
-
-1. In Workbench, select **Particle: Import Project** and select the `project.properties` file in the directory that you just downloaded and extracted.
-
-2. Use **Particle: Configure Project for Device** and select **deviceOS@5.3.2** and choose a target. (e.g. **P2** , this option is also used for the Photon 2).
-
-3. Compile with  **Particle: Compile application (local)**
-
-4. Flash with **Particle: Flash application (local)**
-
-5. Open the serial monitor with **Particle: Serial Monitor** to view the inference output
-
-> **Important!** At this time you cannot use the **Particle: Cloud Compile** or **Particle: Cloud Flash** options; local compilation is required.
 
 ## License
 
