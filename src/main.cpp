@@ -38,6 +38,7 @@ void loop();
 // };
 static float features[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE];
 static ADXL362DMA accel(SPI, D13); // A2 is D13, but is undefined in <project>_inferencing.h
+static const int target_class = 1; // "Snake" class
 
 /**
  * @brief      Copy raw feature data in out_ptr
@@ -62,13 +63,14 @@ void print_inference_result(ei_impulse_result_t result);
  */
 void setup()
 {
-    // put your setup code here, to run once:
+    // Initialize LED
+    pinMode(D7, OUTPUT);
 
     // Wait for serial to make it easier to see the serial logs at startup.
     waitFor(Serial.isConnected, 15000);
     delay(2000);
 
-    ei_printf("Edge Impulse standalone inferencing (P2) example\n");
+    ei_printf("Edge Impulse live inferencing (P2) example\n");
 
     // Init the accelerometer
     accel.softReset();
@@ -165,6 +167,14 @@ void print_inference_result(ei_impulse_result_t result) {
     for (uint16_t i = 0; i < EI_CLASSIFIER_LABEL_COUNT; i++) {
         ei_printf("  %s: ", ei_classifier_inferencing_categories[i]);
         ei_printf("%.5f\r\n", result.classification[i].value);
+    }
+
+    // Turn on LED if target class is detected
+    if (result.classification[target_class].value > 0.5) {
+        digitalWrite(D7, HIGH);
+    }
+    else {
+        digitalWrite(D7, LOW);
     }
 #endif
 
