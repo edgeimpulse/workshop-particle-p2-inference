@@ -48,7 +48,7 @@ Once installed, click the Particle Workshop extension on the left-side toolbar o
 
 2. Use **Particle: Configure Project for Device** and follow the prompts:
 
-    a. Select **deviceOS@5.5.0** 
+    a. Select **deviceOS@5.5.0**
 
     b. Choose **Photon/P2** as your target
 
@@ -71,22 +71,3 @@ If you wish to deploy your own model, deploy with the *Particle* target from the
  * *tflite-model/*
 
 When deployed, these folders contain your trained model and all the necessary code to run inference.
-
-## License
-
-Unless otherwise noted, all code is released under the Apache 2.0 license.
-
-Copyright (c) 2023 EdgeImpulse Inc.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an "AS
-IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
-express or implied. See the License for the specific language
-governing permissions and limitations under the License.
-
-SPDX-License-Identifier: Apache-2.0
